@@ -10,7 +10,9 @@ RTM：OpenRTM-aist-1.1.2-RELEASE
 
 ## 開発コンポーネント  
 ### SeedUpperBody
-既存のSEED-Noid上半身制御RTC[SeedUpperBody](https://github.com/rsdlab/SeedUpperBody-RTM-pkg)に双腕I/Fを追加したRTC  
+既存のSEED-Noid上半身制御RTCに双腕I/Fを追加したRTC
+参考：[https://github.com/rsdlab/SeedUpperBody-RTM-pkg/tree/master/RTC/SeedUpperBodyRTC](https://github.com/rsdlab/SeedUpperBody-RTM-pkg/tree/master/RTC/SeedUpperBodyRTC)
+
 ### SeedDualArmController
 SEEDUpperBodyを双腕I/Fで操作するためのRTC
 
