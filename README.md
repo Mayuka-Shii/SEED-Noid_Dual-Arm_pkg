@@ -9,14 +9,17 @@ OS：Ubuntu16.04
 RTM：OpenRTM-aist-1.1.2-RELEASE  
 
 ## 開発コンポーネント  
-### SeedUpperBody
+### [SeedUpperBody](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/tree/master/RTC/SeedUpperBody)
 既存のSEED-Noid上半身制御RTCに双腕I/Fを追加したRTC  
 参考：[https://github.com/rsdlab/SeedUpperBody-RTM-pkg/tree/master/RTC/SeedUpperBodyRTC](https://github.com/rsdlab/SeedUpperBody-RTM-pkg/tree/master/RTC/SeedUpperBodyRTC)
 
-### SeedDualArmController
+### [SeedDualArmController](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/tree/master/RTC/SeedDualArmController)
 SEEDUpperBodyを双腕I/Fで操作するためのRTC
 
 ## マニュアル
-[SEED-Noid における双腕作業のための RTC 群マニュアル]()
+[SEED-Noid における双腕作業のための RTC 群マニュアル](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/SEED-Noid_Dual-Arm_pkg_Manual.pdf)
 
-## 更新
+## 開発予定コンポーネント
+### JointAngleRTMROSBridge
+RTMから受け取った関節角度をROSに送信するコンポーネント  
+ROS側では，ROSと連携したGazebo上のロボットモデルを動かしたいと思っています
