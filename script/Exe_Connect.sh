@@ -1,21 +1,13 @@
 #!/bin/sh
 
 COM="gnome-terminal -e"
-export HOST="localhost/rsdlab.host_cxt"
+export HOST="localhost"
 
 echo "ネーミングサーバーを実行します。"
 sudo rtm-naming
 
-echo ""
-echo "SEED-Noid上半身制御コンポーネント群を起動します。"
-echo "デフォルトではシリアルポートは /dev/ttyUSB0 に設定されます。"
-echo "変更する場合RTSystemEditorを起動して変更して下さい"
-echo ""
-
-cd ../RTC/SeedDualArmController/
-$COM "build/src/SeedDualArmControllerComp"
-cd ../SeedUpperBody/
-$COM "build/src/SeedUpperBodyComp"
+$COM "../RTC/SeedDualArmController/build/src/SeedDualArmControllerComp -f ../RTC/SeedDualArmController/rtc.conf"
+$COM "../RTC/SeedUpperBody/build/src/SeedUpperBodyComp -f ../RTC/SeedUpperBody/rtc.conf"
 
 rtconf $HOST/SeedUpeerBodyRTC0.rtc set port_name "/dev/ttyUSB0"
 
