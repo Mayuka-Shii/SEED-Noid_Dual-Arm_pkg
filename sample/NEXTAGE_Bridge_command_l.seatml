@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <seatml>
+  <general name="NEXTAGE_Bridge_command_l">
+    <adaptor name="in" type="rtcin" datatype="TimedFloatSeq" />
+    <adaptor name="/larm_controller/command" type="ros_pub" datatype="trajectory_msgs/JointTrajectory" size="10"/>
+  </general>
+
+  <state name="main_state">
+   <rule source="in">
+     <script>
+       import rospy
+       from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+       
+       data = seat.get_in_data()
+       
+       Lval = seat.adaptors['/larm_controller/command'].newMessage()
+
+
+       Lval.joint_names.append("LARM_JOINT0")
+       Lval.joint_names.append("LARM_JOINT1")
+       Lval.joint_names.append("LARM_JOINT2")
+       Lval.joint_names.append("LARM_JOINT3")
+       Lval.joint_names.append("LARM_JOINT4")
+       Lval.joint_names.append("LARM_JOINT5")
+
+       Lp = JointTrajectoryPoint()
+
+       Lp.positions.append(data.data[0])
+       Lp.positions.append(data.data[1])
+       Lp.positions.append(data.data[2])
+       Lp.positions.append(data.data[3])
+       Lp.positions.append(data.data[4])
+       Lp.positions.append(data.data[5])
+       
+       Lp.velocities.extend((0,0,0,0,0,0))
+       Lp.accelerations.extend((0,0,0,0,0,0))
+       Lp.effort.extend((0,0,0,0,0,0))
+       
+       Lp.time_from_start = rospy.Duration(1)
+
+       Lval.points.append(Lp)
+       
+       print("send: ", Lval)
+       
+       seat.sendto("/larm_controller/command", Lval)
+
+     </script>
+   </rule>
+  </state>
+
+ </seatml>

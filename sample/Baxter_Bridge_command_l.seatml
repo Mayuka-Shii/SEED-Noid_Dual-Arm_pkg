@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <seatml>
+  <general name="Baxter_Bridge">
+    <adaptor name="in" type="rtcin" datatype="TimedFloatSeq" />
+    <adaptor name="/robot/limb/left/joint_command" type="ros_pub" datatype="baxter_core_msgs/JointCommand" size="10"/>
+
+  </general>
+
+  <state name="main_state">
+   <rule source="in">
+     <script>
+       import rospy
+       from baxter_core_msgs.msg import JointCommand
+       
+       data = seat.get_in_data()
+
+       Lval = seat.adaptors['/robot/limb/left/joint_command'].newMessage()
+
+       Lval.mode = 1;
+
+       Lval.names.append("left_s0")
+       Lval.names.append("left_s1")
+       Lval.names.append("left_e0")
+       Lval.names.append("left_e1")
+       Lval.names.append("left_w0")
+       Lval.names.append("left_w1")
+       Lval.names.append("left_w2")
+
+       Lval.command.append(data.data[7])
+       Lval.command.append(data.data[8])
+       Lval.command.append(data.data[9])
+       Lval.command.append(data.data[10])
+       Lval.command.append(data.data[11])
+       Lval.command.append(data.data[12])
+       Lval.command.append(data.data[13])
+
+       print("send: ", Lval)
+
+       seat.sendto("/robot/limb/left/joint_command", Lval)
+     </script>
+   </rule>
+  </state>
+
+ </seatml>
