@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <seatml>
+   <general name="SEED-Noid_Bridge_state_r">
+    <adaptor name="out" type="rtcout" datatype="TimedFloatSeq" />
+    <adaptor name="/rarm_controller/state" type="ros_sub" datatype="control_msgs/JointTrajectoryControllerState" size="10"/>
+  </general>
+
+  <state name="rarm_state">
+   <rule source="/rarm_controller/state">
+     <script>
+       import rospy
+
+       data = seat.get_in_data()
+       
+       val = []
+
+       val.append(float(-data.actual.positions[0]*180/3.14))
+       val.append(float(-data.actual.positions[1]*180/3.14))
+       val.append(float(-data.actual.positions[2]*180/3.14))
+       val.append(float(-data.actual.positions[3]*180/3.14))
+       val.append(float(-data.actual.positions[4]*180/3.14))
+       val.append(float(-data.actual.positions[6]*180/3.14))
+       val.append(float(-data.actual.positions[7]*180/3.14))
+
+       data = TimedFloatSeq(Time(0,0),val)
+       OpenRTM_aist.setTimestamp(data)
+
+       print("send: ", data)
+       seat.sendto("out", data)
+       
+     </script>
+   </rule>
+  </state>
+
+ </seatml>

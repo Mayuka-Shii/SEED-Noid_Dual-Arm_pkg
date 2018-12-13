@@ -1,0 +1,32 @@
+#ifndef DUALMANIPULATORCOMMONINTERFACE_MIDDLE_IDL
+#define DUALMANIPULATORCOMMONINTERFACE_MIDDLE_IDL
+
+#include "ManipulatorCommonInterface_MiddleLevel.idl"
+#include "LeftManipulatorCommonInterface_MiddleLevel.idl"
+#include "DualManipulatorCommonInterface_DataTypes.idl"
+
+module JARA_ARM_DUAL{
+
+struct CarPosWithElbow {
+  HgMatrix carPos;
+  double elbow;
+  ULONG structFlag;
+};
+
+interface DualManipulatorCommonInterface_Middle {
+  
+  RETURN_ID closeGripper(in ULONG rArm, in ULONG lArm);
+  RETURN_ID getRelativePosition(in HgMatrix RelPos);
+  RETURN_ID moveGripper(in ULONG rArm, in ULONG lArm);
+  RETURN_ID moveLinearCartesianAbs(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
+  RETURN_ID moveLinearCartesianRel(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
+  RETURN_ID movePTPCartesianAbs(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
+  RETURN_ID movePTPCartesianRel(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
+  RETURN_ID movePTPJointAbs(in JointPos rArm, in JointPos lArm);
+  RETURN_ID movePTPJointRel(in JointPos rArm, in JointPos lArm);
+  RETURN_ID openGripper(in ULONG rArm, in ULONG lArm);
+
+};
+};
+
+#endif // DUALMANIPULATORCOMMONINTERFACE_MIDDLE_IDL

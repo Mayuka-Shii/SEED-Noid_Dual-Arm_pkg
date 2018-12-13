@@ -1,0 +1,54 @@
+# DualArmSimulation CMake config file
+#
+# This file sets the following variables:
+# DualArmSimulation_FOUND - Always TRUE.
+# DualArmSimulation_INCLUDE_DIRS - Directories containing the DualArmSimulation include files.
+# DualArmSimulation_IDL_DIRS - Directories containing the DualArmSimulation IDL files.
+# DualArmSimulation_LIBRARIES - Libraries needed to use DualArmSimulation.
+# DualArmSimulation_DEFINITIONS - Compiler flags for DualArmSimulation.
+# DualArmSimulation_VERSION - The version of DualArmSimulation found.
+# DualArmSimulation_VERSION_MAJOR - The major version of DualArmSimulation found.
+# DualArmSimulation_VERSION_MINOR - The minor version of DualArmSimulation found.
+# DualArmSimulation_VERSION_REVISION - The revision version of DualArmSimulation found.
+# DualArmSimulation_VERSION_CANDIDATE - The candidate version of DualArmSimulation found.
+
+message(STATUS "Found DualArmSimulation-@PROJECT_VERSION@")
+set(DualArmSimulation_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(DualArmSimulation_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(DualArmSimulation_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(DualArmSimulation_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(DualArmSimulation_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(DualArmSimulation_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(DualArmSimulation_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(DualArmSimulation_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(DualArmSimulation_VERSION @PROJECT_VERSION@)
+set(DualArmSimulation_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(DualArmSimulation_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(DualArmSimulation_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(DualArmSimulation_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

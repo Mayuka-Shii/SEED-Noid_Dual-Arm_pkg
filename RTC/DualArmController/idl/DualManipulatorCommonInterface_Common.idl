@@ -1,0 +1,21 @@
+#ifndef DUALMANIPULATORCOMMONINTERFACE_COMMON_IDL
+#define DUALMANIPULATORCOMMONINTERFACE_COMMON_IDL
+
+#include "ManipulatorCommonInterface_Common.idl"
+#include "LeftManipulatorCommonInterface_Common.idl"
+#include "DualManipulatorCommonInterface_DataTypes.idl"
+
+module JARA_ARM_DUAL{
+  
+interface DualManipulatorCommonInterface_Common {
+
+  RETURN_ID servoOFFArm();
+  RETURN_ID servoOFFHand();
+  RETURN_ID servoONArm();
+  RETURN_ID servoONHand();
+
+};
+
+};
+
+#endif // DUALMANIPULATORCOMMONINTERFACE_COMMON_IDL

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <seatml>
+  <general name="SEED-Noid_Bridge_command_r">
+    <adaptor name="in" type="rtcin" datatype="TimedFloatSeq" />
+    <adaptor name="/rarm_controller/command" type="ros_pub" datatype="trajectory_msgs/JointTrajectory" size="10"/>
+  </general>
+
+  <state name="main_state">
+   <rule source="in">
+     <script>
+       import rospy
+       from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+       
+       data = seat.get_in_data()
+
+       Rval = seat.adaptors['/rarm_controller/command'].newMessage()
+
+       Rval.joint_names.append("r_shoulder_p_joint")
+       Rval.joint_names.append("r_shoulder_r_joint")
+       Rval.joint_names.append("r_shoulder_y_joint")
+       Rval.joint_names.append("r_elbow_joint")
+       Rval.joint_names.append("r_wrist_y_joint")
+       Rval.joint_names.append("r_wrist_p_joint")
+       Rval.joint_names.append("r_wrist_r_joint")
+       Rval.joint_names.append("r_hand_y_joint")
+
+       Rp = JointTrajectoryPoint()
+       
+       
+       Rp.positions.append(-data.data[0]*3.14/180)
+       Rp.positions.append(-data.data[1]*3.14/180)
+       Rp.positions.append(-data.data[2]*3.14/180)
+       Rp.positions.append(-data.data[3]*3.14/180)
+       Rp.positions.append(-data.data[4]*3.14/180)
+       Rp.positions.append(0)
+       Rp.positions.append(-data.data[5]*3.14/180)
+       Rp.positions.append(-data.data[6]*3.14/180)
+
+       Rp.velocities.extend((0,0,0,0,0,0,0,0))
+       Rp.accelerations.extend((0,0,0,0,0,0,0,0))
+       Rp.effort.extend((0,0,0,0,0,0,0,0))
+       
+       Rp.time_from_start = rospy.Duration(1)
+
+       
+       Rval.points.append(Rp)
+       
+       print("send: ", Rval)
+       
+       seat.sendto("/rarm_controller/command", Rval)
+
+     </script>
+   </rule>
+  </state>
+
+ </seatml>

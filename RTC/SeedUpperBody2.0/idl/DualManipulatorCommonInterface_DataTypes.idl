@@ -1,0 +1,21 @@
+#ifndef DUALMANIPULATORCOMMONINTERFACE_DATATYPES_IDL
+#define DUALMANIPULATORCOMMONINTERFACE_DATATYPES_IDL
+
+#include "BasicDataType.idl"
+
+module JARA_ARM_DUAL{
+  
+  typedef double HgMatrix [3][4];
+  typedef sequence<double> DoubleSeq;
+  typedef sequence<double> JointPos;
+  typedef sequence<JointPos> JointPosSeq;
+  typedef unsigned long ULONG;
+  
+  struct RETURN_ID {
+    long id;
+    string comment;
+  };
+
+};
+
+#endif // DUALMANIPULATORCOMMONINTERFACE_DATATYPES_IDL
