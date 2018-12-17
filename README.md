@@ -1,5 +1,8 @@
 # SEED-Noid における双腕作業のための RTC 群
 
+## 更新
+RTMコンテスト発表資料をアップしました．
+
 ## 概要
 当初の概要：THK社のSEED-Noidに対して,双腕ロボット制御機能共通インタフェース（以下、双腕共通I/F）を適用。  
 現在の概要：双腕共通I/Fをより良いものとするため、双腕共通I/Fを拡張した双腕共通I/F2.0を提案し、THK社のSEED-Noidに対して,双腕共通I/F2.0を適用。  
@@ -42,6 +45,5 @@ RTM側から送信された目標関節角度をROS側に渡すブリッジRTC
 ### 仕様書
 [双腕ロボット制御機能共通インタフェース2.0仕様書](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/interface_doublearm_2.0.pdf)
 
-
-## 今後の展望
-RTMとROSのブリッジ作成マニュアル公開予定
+### その他
+[RTMコンテストプレゼン資料](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/RT%20Components%20for%20Dual-arm%20manipulation%20with%20SEED-Noid%20presentation.pdf)
