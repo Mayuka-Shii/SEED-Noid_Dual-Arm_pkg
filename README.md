@@ -1,6 +1,7 @@
 # SEED-Noid における双腕作業のための RTC 群
 
 ## 更新
+eSEATを用いたRTMとROSのブリッジ作成マニュアルをアップしました．  
 RTMコンテスト発表資料をアップしました．
 
 ## 概要
@@ -40,7 +41,7 @@ RTM側から送信された目標関節角度をROS側に渡すブリッジRTC
 
 ## ドキュメント
 ### マニュアル
-[SEED-Noid における双腕作業のための RTC 群マニュアル](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/SEED-Noid_Dual-Arm_pkg_Manual.pdf)
+[SEED-Noid における双腕作業のための RTC 群マニュアル](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/SEED-Noid_Dual-Arm_pkg_Manual.pdf)  
 [eSEATを用いたRTMとROSのブリッジ作成マニュアル](https://github.com/Mayuka-Shii/SEED-Noid_Dual-Arm_pkg/blob/master/RTM-ROS_Bridge_Manual.pdf)
 
 ### 仕様書
